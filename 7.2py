@@ -1,0 +1,28 @@
+print('#2')
+import math
+
+def calculate_area(a, b, c, d, diag):
+ """Вычисляет площадь выпуклого четырехугольника."""
+ # Проверяем, является ли четырехугольник выпуклым
+ if not (a + b > diag and a + d > diag and b + c > diag and c + d > diag):
+  return "Четырехугольник не является выпуклым"
+
+ s1 = heron_formula(a, b, diag)
+ s2 = heron_formula(c, d, diag)
+
+ return s1 + s2
+
+def heron_formula(a, b, c):
+ """Формула Герона для вычисления площади треугольника."""
+ s = (a + b + c) / 2
+ return math.sqrt(s * (s - a) * (s - b) * (s - c))
+
+a = float(input("Введите длину стороны a: "))
+b = float(input("Введите длину стороны b: "))
+c = float(input("Введите длину стороны c: "))
+d = float(input("Введите длину стороны d: "))
+diag = float(input("Введите длину диагонали: "))
+
+area = calculate_area(a, b, c, d, diag)
+
+print(f"Площадь четырехугольника: {area}")
