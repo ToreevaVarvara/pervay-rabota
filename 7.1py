@@ -1,0 +1,22 @@
+print('#1')
+def nod(a, b):
+ """Алгоритм Евклида для нахождения наибольшего общего делителя."""
+ while b:
+  a, b = b, a % b
+ return a
+
+def functia(A, B, C, D):
+ """Вычитает вторую дробь из первой и возвращает результат в несократимой форме."""
+ common_denominator = B * D
+ numerator = A * D - C * B
+ divisor = nod(numerator, common_denominator)
+ return (numerator // divisor), (common_denominator // divisor)
+
+A = int(input("Введите числитель первой дроби (A): "))
+B = int(input("Введите знаменатель первой дроби (B): "))
+C = int(input("Введите числитель второй дроби (C): "))
+D = int(input("Введите знаменатель второй дроби (D): "))
+
+result_numerator, result_denominator = functia(A, B, C, D)
+
+print('Результат вычитания: ',result_numerator/result_denominator)
